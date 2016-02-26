@@ -1,4 +1,4 @@
-# ${1:Flood-Fill Density Based Clustering (FFDBC)}
+# Flood-Fill Density Based Clustering (FFDBC)
 
 This project is a the reference implementation of the Flood Fill Density Based Clustering algorithm,
 a fast density based clustering algorithm with O(n) time complexity.
