@@ -1,5 +1,3 @@
-<snippet>
-  <content><![CDATA[
 # ${1:Flood-Fill Density Based Clustering (FFDBC)}
 
 This project is a the reference implementation of the Flood Fill Density Based Clustering algorithm,
@@ -57,6 +55,3 @@ University of Palermo (Italy) as part of a post-grad research project.
 ## License
 
 This software is released under the terms of the GPL 3.0 license.
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
