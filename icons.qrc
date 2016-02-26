@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>do.png</file>
+        <file>info-256.png</file>
+    </qresource>
+</RCC>
