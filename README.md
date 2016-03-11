@@ -47,6 +47,12 @@ To ensure maximum readability of the code, this reference implementation is not 
 Nevertheless, it shows how fast FFDBC is when compared to optimized DBSCAN implementations.
 We believe that parallel implementations (on CPU or GPU) can produce significantly higher throughputs.
 
+## Wrapper for Matlab
+
+The directory "matlab" contains a wrapper to use FFDBC with Matlab. The included Makefile will compile the C++ code, 
+generating a .mex file, provided that the MEX compiler and the required libraries are visible in PATH. Adjust the Makefile
+according to your installation before attempting to compile.
+
 ## Credits
 
 FFDBC was developed at the Computer Human Interaction Laboratory (http://chilab.dicgim.unipa.it) of the
