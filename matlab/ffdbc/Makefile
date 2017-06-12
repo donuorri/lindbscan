@@ -1,4 +1,4 @@
-TARGET=ffdbc
+TARGET=lindbscan
 CFLAGS=-m64 -pipe -O3 -Wall -W -D_REENTRANT -fPIC -D_QT_NO_DEBUG -D_QT_CORE_LIB
 INC=-I/usr/include/qt5 -I/usr/include/qt5/QtCore -I.
 LIBS=-lQt5Core -lpthread -L/usr/lib/x86_64-linux-gnu

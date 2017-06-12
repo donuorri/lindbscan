@@ -1,7 +1,7 @@
-%FFDBCCLUSTERING clusterize points according to a given number of
+%LinDBSCANCLUSTERING clusterize points according to a given number of
 %neighbors in a specific radius distance
 %
-%[class, type] = ffdbcClustering( points, nNeigh, radius)
+%[class, type] = lindbscanClustering( points, nNeigh, radius)
 %
 %Input:
 %   points = 3xN matrix containing 3D points to clusterize

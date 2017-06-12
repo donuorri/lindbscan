@@ -4,7 +4,7 @@
 #include <chrono>
 #include <cstdint>
 
-#include <FFDBC.h>
+#include <lindbscan.h>
 #include <common.h>
 #include <QList>
 
@@ -34,9 +34,9 @@ void entryPoint(const mxArray *x, double *classes, double *types, double k, doub
 		points->append(p);
 	}
 
-	// run FFDBC
-	FFDBC* ffdbc = new FFDBC(k, gamma, points);
-	ffdbc->doWorkSynch();
+	// run LinDBSCAN
+	LinDBSCAN* lindbscan = new LinDBSCAN(k, gamma, points);
+	lindbscan->doWorkSynch();
 	
 	// copy output classes
 	for(int k=0; k < points->size(); k++)
@@ -47,7 +47,7 @@ void entryPoint(const mxArray *x, double *classes, double *types, double k, doub
 	}
 
 	// cleanup
-	delete ffdbc;
+	delete lindbscan;
 	delete points;
 }
 
