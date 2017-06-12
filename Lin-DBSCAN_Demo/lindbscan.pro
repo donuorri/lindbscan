@@ -6,7 +6,7 @@
 
 QT       += core gui widgets
 
-TARGET = FFDBCDemo
+TARGET = LinDBSCAN
 
 TEMPLATE = app
 
@@ -17,7 +17,7 @@ SOURCES += main.cpp \
     gridgraphicsitem.cpp \
     convexhull.cpp \
     pointsloader.cpp \
-    FFDBC.cpp
+    lindbscan.cpp
 
 HEADERS += \
     common.h \
@@ -28,7 +28,7 @@ HEADERS += \
     convexhull.h \
     pointsloader.h \
     myreal.h \
-    FFDBC.h
+    lindbscan.h
 
 FORMS += \
     mainwindow.ui

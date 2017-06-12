@@ -3,14 +3,14 @@
 ** support, and with no warranty, express or implied, as to its usefulness for
 ** any purpose.
 **
-** FFDBC.cpp
+** lindbscan.cpp
 **
 **
 ** Author: Sergio Monteleone    sergio.monteleone@unipa.it
 ** Author: Gabriella Giordano   gabriella.giordano@unipa.it
 ** -------------------------------------------------------------------------*/
 
-#include "FFDBC.h"
+#include "lindbscan.h"
 
 #include <qmath.h>
 #include <QGraphicsScene>
@@ -21,7 +21,14 @@
 #include <QPainter>
 #include <cstdlib>
 
-FFDBC::FFDBC(int minPts,qreal gamma, QList<Point*>* points, QObject *parent)
+/*!
+ * \brief LinDBSCAN::LinDBSCAN
+ * \param minPts
+ * \param gamma
+ * \param points
+ * \param parent
+ */
+LinDBSCAN::LinDBSCAN(int minPts,qreal gamma, QList<Point*>* points, QObject *parent)
 {
     this->setParent(parent);
 
@@ -31,7 +38,10 @@ FFDBC::FFDBC(int minPts,qreal gamma, QList<Point*>* points, QObject *parent)
     clusters = NULL;
 }
 
-FFDBC::~FFDBC()
+/*!
+ * \brief LinDBSCAN::~LinDBSCAN
+ */
+LinDBSCAN::~LinDBSCAN()
 {
     if(clusters != NULL)
     {
@@ -49,12 +59,12 @@ FFDBC::~FFDBC()
 }
 
 /*!
- * \brief FFDBC::getCellFromCoords
+ * \brief LinDBSCAN::getCellFromCoords
  * \param coord
  * \param cells
  * \return
  */
-Cell* FFDBC::getCellFromCoords(QVector<int> coord, QHash<QVector<int>, Cell*> *cells)
+Cell* LinDBSCAN::getCellFromCoords(QVector<int> coord, QHash<QVector<int>, Cell*> *cells)
 {
     Cell* result = NULL;
 
@@ -64,7 +74,13 @@ Cell* FFDBC::getCellFromCoords(QVector<int> coord, QHash<QVector<int>, Cell*> *c
     return result;
 }
 
-void FFDBC::createGridTable(QList<Point*>* points, QHash<QVector<int>, Cell*>* map, qreal epsilon)
+/*!
+ * \brief LinDBSCAN::createGridTable
+ * \param points
+ * \param map
+ * \param epsilon
+ */
+void LinDBSCAN::createGridTable(QList<Point*>* points, QHash<QVector<int>, Cell*>* map, qreal epsilon)
 {
     for(int i=0; i < points->size(); i++)
     {
@@ -100,12 +116,12 @@ void FFDBC::createGridTable(QList<Point*>* points, QHash<QVector<int>, Cell*>* m
 
 
 /*!
- * \brief FFDBC::fill
+ * \brief LinDBSCAN::fill
  * \param pivot
  * \param result
  * \param table
  */
-void FFDBC::fill(QVector<int> pivot, Cluster* result, QHash<QVector<int>, Cell*> *table)
+void LinDBSCAN::fill(QVector<int> pivot, Cluster* result, QHash<QVector<int>, Cell*> *table)
 {
     QStack<QVector<int> > stack;
 
@@ -168,13 +184,12 @@ void FFDBC::fill(QVector<int> pivot, Cluster* result, QHash<QVector<int>, Cell*>
 }
 
 /*!
- * \brief ClusteringThread::floodFill
+ * \brief LinDBSCAN::floodFill
  * \param pass
  * \param table
- * \param points
  * \return
  */
-Cluster* FFDBC::floodFill(int pass, QHash<QVector<int>, Cell*> *table)
+Cluster* LinDBSCAN::floodFill(int pass, QHash<QVector<int>, Cell*> *table)
 {
     Cluster* result = NULL;
 
@@ -203,18 +218,20 @@ Cluster* FFDBC::floodFill(int pass, QHash<QVector<int>, Cell*> *table)
     return result;
 }
 
-void FFDBC::run()
+/*!
+ * \brief LinDBSCAN::run
+ */
+void LinDBSCAN::run()
 {
     this->doWorkSynch();
 }
 
 /*!
- * \brief FFDBC::doWorkSynch
- * \param params
+ * \brief LinDBSCAN::doWorkSynch
  */
-void FFDBC::doWorkSynch()
+void LinDBSCAN::doWorkSynch()
 {
-    qDebug() << "Running FFDBC...";
+    qDebug() << "Running Lin-DBSCAN...";
     clusters = new QMap<int, Cluster*>();
 
     QHash<QVector<int>, Cell*> table;

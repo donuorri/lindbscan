@@ -3,25 +3,25 @@
 ** support, and with no warranty, express or implied, as to its usefulness for
 ** any purpose.
 **
-** FFDBC.h
+** lindbscan.h
 **
 **
 ** Author: Sergio Monteleone    sergio.monteleone@unipa.it
 ** Author: Gabriella Giordano   gabriella.giordano@unipa.it
 ** -------------------------------------------------------------------------*/
 
-#ifndef FLOODFILLDBSCAN_H
-#define FLOODFILLDBSCAN_H
+#ifndef LINDBSCAN_H
+#define LINDBSCAN_H
 
 #include <QThread>
 #include "common.h"
 
-class FFDBC : public QThread
+class LinDBSCAN : public QThread
 {
     Q_OBJECT
 public:
-    explicit FFDBC(int minPts, qreal gamma, QList<Point*>* points, QObject *parent = 0);
-    ~FFDBC();
+    explicit LinDBSCAN(int minPts, qreal gamma, QList<Point*>* points, QObject *parent = 0);
+    ~LinDBSCAN();
 
     void doWorkSynch();
     void run();

@@ -31,7 +31,7 @@
 #include "clustergraphicsitem.h"
 #include "noisegraphicsitem.h"
 
-#include "FFDBC.h"
+#include "lindbscan.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -96,16 +96,16 @@ void MainWindow::runClusteringBenchmark()
 
     if(points)
     {
-        FFDBC* ffdbcThread = NULL;
+        LinDBSCAN* lindbscanThread = NULL;
 
-        ffdbcThread = new FFDBC(ui->minptsSpinBox->value(), ui->gammaSpinBox->value(), points, this);
+        lindbscanThread = new LinDBSCAN(ui->minptsSpinBox->value(), ui->gammaSpinBox->value(), points, this);
 
-        connect(ffdbcThread, SIGNAL(clusteringProgress(int,int)), this, SLOT(on_clusteringProgress(int,int)));
-        connect(ffdbcThread, SIGNAL(clusteringCompleted()), this, SLOT(on_clusteringCompleted()));
+        connect(lindbscanThread, SIGNAL(clusteringProgress(int,int)), this, SLOT(on_clusteringProgress(int,int)));
+        connect(lindbscanThread, SIGNAL(clusteringCompleted()), this, SLOT(on_clusteringCompleted()));
 
         timer.start();
 
-        ffdbcThread->start();
+        lindbscanThread->start();
     }
 }
 
@@ -118,7 +118,7 @@ void MainWindow::on_clusteringCompleted()
 
     qDebug() << QString::number(points->size()) << " points processed in " << QString::number(elapsedTimeInMs) << " ms.";
 
-    FFDBC* cThread = qobject_cast<FFDBC*>(sender());
+    LinDBSCAN* cThread = qobject_cast<LinDBSCAN*>(sender());
 
     if(!cThread) return;
 
@@ -277,12 +277,12 @@ void MainWindow::on_drawGridCheckBox_toggled(bool checked)
 void MainWindow::on_aboutButton_clicked()
 {
     QStringList aboutHTMLText;
-    aboutHTMLText << "<h2>Flood Fill Density-Based Clustering</h2>";
+    aboutHTMLText << "<h2>Lin-DBSCAN</h2>";
     aboutHTMLText << "<p>An algorithm for approximation of density-based clustering by space quantization on geospatial datasets.</p>";
 
     aboutHTMLText << "<h3>Usage</h3>";
     aboutHTMLText << "<p>Select an input dataset, a value for Gamma and MinPts and click on Run.";
     aboutHTMLText << "Change options to modify the renderding mode and calculate validation indexes.</p>";
 
-    QMessageBox::about(this, "About FFDBC", aboutHTMLText.join(' '));
+    QMessageBox::about(this, "About Lin-DBSCAN", aboutHTMLText.join(' '));
 }

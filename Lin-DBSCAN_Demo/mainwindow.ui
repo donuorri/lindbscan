@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>FFDBC reference implementation</string>
+   <string>Lin-DBSCAN reference implementation</string>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
